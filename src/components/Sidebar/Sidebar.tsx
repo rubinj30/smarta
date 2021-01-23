@@ -1,8 +1,9 @@
-import { Drawer, DrawerBody, DrawerContent, DrawerHeader, DrawerOverlay, useColorMode } from '@chakra-ui/react';
+import { Box, Drawer, DrawerBody, DrawerContent, DrawerOverlay } from '@chakra-ui/react';
 import React from 'react';
 import { FC, useState } from 'react';
 import { FaTrain, FaWindowClose } from 'react-icons/fa';
-import { DrawerHeaderStyled } from '../../styles/styles';
+import { ColorModeSwitcher } from '../../ColorModeSwitcher';
+import { DrawerFooterStyled, DrawerHeaderStyled, FadeStyled, SettingsIconStyled, SidebarTextItem } from './SidebarStyles';
 
 export interface SidebarProps {
     open: boolean;
@@ -11,9 +12,8 @@ export interface SidebarProps {
 }
 
 export const Sidebar: FC<SidebarProps> = (props) => {
-    const { open, onOpen, onClose } = props;
-    const color = useColorMode();
-    console.log({ color })
+    const { open, onClose } = props;
+    const [settingsOpen, setSettingsOpen] = useState<boolean>(false)
     return (
         <Drawer
             isOpen={open}
@@ -26,14 +26,27 @@ export const Sidebar: FC<SidebarProps> = (props) => {
                 <DrawerContent>
                     <DrawerHeaderStyled borderBottomWidth="1px">
                         <FaTrain />
-                        <h3>Basic Drawer</h3>
+                        <h3>Transit</h3>
                         <FaWindowClose onClick={onClose} className="close-icon" />
                     </DrawerHeaderStyled>
                     <DrawerBody>
-                        <p>Some contents...</p>
-                        <p>Some contents...</p>
-                        <p>Some contents...</p>
+                        <SidebarTextItem fontSize="xl">Map</SidebarTextItem>
+                        <SidebarTextItem fontSize="xl">Favorites</SidebarTextItem>
+                        <SidebarTextItem fontSize="xl">Service Status</SidebarTextItem>
                     </DrawerBody>
+                    <DrawerFooterStyled>
+                        <SettingsIconStyled onClick={() => setSettingsOpen(!settingsOpen)} />
+                        <FadeStyled in={settingsOpen}>
+                            <Box
+                                p="5px"
+                                w="100%"
+                                h="100px"
+                                borderTop="1px solid #E2E8F0"
+                            >
+                                <ColorModeSwitcher justifySelf="flex-end" />
+                            </Box>
+                        </FadeStyled>
+                    </DrawerFooterStyled>
                 </DrawerContent>
             </DrawerOverlay>
         </Drawer>
