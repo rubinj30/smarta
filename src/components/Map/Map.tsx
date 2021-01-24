@@ -3,12 +3,6 @@ import { GoogleMap, Marker, LoadScript } from "@react-google-maps/api";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { MapStyled } from "./MapStyles";
-
-const containerStyle = {
-  height: "100%",
-  margin: "0 auto",
-};
-
 interface MapProps {
   position: {
     latitude: number | undefined;
@@ -31,7 +25,10 @@ const Map: FC<MapProps> = (props) => {
     <MapStyled w={{ base: "97%", lg: "800px" }} height={{ base: 400, md: 600 }}>
       <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_KEY!}>
         <GoogleMap
-          mapContainerStyle={containerStyle}
+          mapContainerStyle={{
+            height: "100%",
+            margin: "0 auto",
+          }}
           center={{ lat: latitude, lng: longitude }}
           zoom={10}
         >
@@ -44,14 +41,13 @@ const Map: FC<MapProps> = (props) => {
               }}
             />
             {allBusStops.map((stop) => {
-              console.log("TOP", stop);
               return (
                 <Marker
                   key={stop.STOPID}
                   draggable={false}
                   position={{
-                    lat: parseInt(stop.LATITUDE),
-                    lng: parseInt(stop.LONGITUDE),
+                    lat: parseFloat(stop.LATITUDE),
+                    lng: parseFloat(stop.LONGITUDE),
                   }}
                 />
               );
