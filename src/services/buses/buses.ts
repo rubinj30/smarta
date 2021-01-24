@@ -10,7 +10,7 @@ export const ALL_BUSES_URL = `${proxy_url}${BUS_URL_BASE}/GetAllBus`;
 
 export const BUS_BY_ROUTE = `${proxy_url}${BUS_URL_BASE}/GetBusByRoute`;
 
-export const getAllBuses = async () => {
+export const getAllBusStops = async () => {
   try {
     const response = await axios.get(ALL_BUSES_URL);
     return response.data;
