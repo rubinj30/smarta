@@ -16,6 +16,7 @@ import {
   SettingsIconStyled,
 } from "./SidebarStyles";
 import { SidebarBody } from "./SidebarBody/SidebarBody";
+import { ColorModeSwitcher } from "../../ColorModeSwitcher";
 export interface SidebarProps {
   open: boolean;
   onOpen: () => void;
@@ -47,7 +48,7 @@ export const Sidebar: FC<SidebarProps> = (props) => {
             />
             <FadeStyled in={settingsOpen}>
               <Box p="5px" w="100%" h="100px" borderTop="1px solid #E2E8F0">
-                {/* <ColorModeSwitcher justifySelf="flex-end" /> */}
+                <ColorModeSwitcher justifySelf="flex-end" />
               </Box>
             </FadeStyled>
           </DrawerFooterStyled>
