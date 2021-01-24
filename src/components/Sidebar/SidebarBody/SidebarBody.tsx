@@ -5,6 +5,10 @@ import { useHistory } from "react-router-dom";
 
 const items = [
   {
+    text: "Map",
+    route: "/",
+  },
+  {
     text: "Nearest Stops",
     route: "/",
   },
@@ -13,9 +17,10 @@ const items = [
     route: "/status",
   },
   {
-    text: "Map",
-    route: "/map",
+    text: "Bus Routes",
+    route: "/buses",
   },
+
   // TODO: add backend and save favorites
   // {
   //     text: 'Favorites',

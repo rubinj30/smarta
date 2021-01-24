@@ -4,35 +4,56 @@ import { Sidebar } from "../Sidebar/Sidebar";
 import { Homepage } from "../Homepage/Homepage";
 import { usePosition } from "use-position";
 import { useEffect } from "react";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { getAllBusStopsThunk } from "../../redux/ThunkActions/getAllBusStopsThunk/getAllBusStopsThunk";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Provider } from "react-redux";
 
-import { RootState, store } from "../../redux/store";
+import { store } from "../../redux/store";
 import { Header } from "../Header/Header";
 import theme from "../../theme";
+import { setError } from "../../redux/Features/Global/globalSlice";
+import Map from "../Map/Map";
 
 export const App = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const dispatch = useDispatch();
-  const { allBusStops } = useSelector((state: RootState) => state.global);
-  const { latitude, longitude } = usePosition(false);
+  const position = usePosition(false);
 
   useEffect(() => {
     dispatch(getAllBusStopsThunk());
+    // if (!localStorage.getItem('position')) {
+    //   const position = usePosition(false);
+    //   if (position.errorMessage) {
+    //     dispatch(setError('Unable to get user\'s location'))
+    //   }
+    //   localStorage.setItem('position', position)
+    // }
   }, []);
 
   return (
     <ChakraProvider theme={theme}>
       <Header onOpen={onOpen} />
       <Router>
-        {allBusStops ? JSON.stringify(allBusStops.slice(0, 3), null, 2) : null}
         <Sidebar open={isOpen} onOpen={onOpen} onClose={onClose} />
-        <Homepage longitude={longitude} latitude={latitude} />
+        <Switch>
+          <Route exact path="/">
+            <Map position={position} />
+          </Route>
+          <Route exact path="/buses">
+            <Buses />
+          </Route>
+          <Route>
+            <Homepage />
+          </Route>
+        </Switch>
       </Router>
     </ChakraProvider>
   );
+};
+
+export const Buses = () => {
+  return <div> Buses</div>;
 };
 
 const StoreContainer = () => {

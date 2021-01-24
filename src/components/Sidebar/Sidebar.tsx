@@ -17,6 +17,7 @@ import {
 } from "./SidebarStyles";
 import { SidebarBody } from "./SidebarBody/SidebarBody";
 import { ColorModeSwitcher } from "../../ColorModeSwitcher";
+
 export interface SidebarProps {
   open: boolean;
   onOpen: () => void;

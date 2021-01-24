@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import { Box, Heading, Flex, Center } from "@chakra-ui/react";
 import { HiMenuStyled } from "./HeaderStyles";
+import { FaTrain } from "react-icons/fa";
 
 interface HeaderProps {
   onOpen: () => void;
@@ -16,8 +17,8 @@ export const Header: FC<HeaderProps> = (props) => {
           size="2em"
           onClick={onOpen}
         />
-        <Heading as="h3" size="lg">
-          PubTransit
+        <Heading as="h3" size="lg" display="flex" alignItems="center">
+          <span style={{ paddingRight: 10 }}>SMARTA</span> <FaTrain />
         </Heading>
       </Center>
     </Box>
