@@ -8,6 +8,8 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { getAllBusStopsThunk } from "../../redux/ThunkActions/getAllBusStopsThunk/getAllBusStopsThunk";
 import { useDispatch, useSelector } from "react-redux";
 import { Provider } from "react-redux";
+import { persistStore } from "redux-persist";
+import { PersistGate } from "redux-persist/integration/react";
 
 import { RootState, store } from "../../redux/store";
 import { Header } from "../Header/Header";
@@ -37,28 +39,31 @@ export const App = () => {
       <Header onOpen={onOpen} />
       <Router>
         <Sidebar open={isOpen} onOpen={onOpen} onClose={onClose} />
-        {loading ? (
-          <Switch>
-            <Route exact path="/">
-              <Map position={position} />
-            </Route>
-            <Route exact path="/buses">
-              <Buses />
-            </Route>
-            <Route>
-              <Homepage />
-            </Route>
-          </Switch>
-        ) : null}
+        {/* {loading ? ( */}
+        <Switch>
+          <Route exact path="/">
+            <Map position={position} />
+          </Route>
+          <Route exact path="/buses">
+            <Buses />
+          </Route>
+          <Route>
+            <Homepage />
+          </Route>
+        </Switch>
+        {/* ) : null} */}
       </Router>
     </ChakraProvider>
   );
 };
 
+let persistor = persistStore(store);
 const StoreContainer = () => {
   return (
     <Provider store={store}>
-      <App />
+      <PersistGate loading={null} persistor={persistor}>
+        <App />
+      </PersistGate>
     </Provider>
   );
 };
