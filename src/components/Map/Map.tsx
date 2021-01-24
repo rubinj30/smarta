@@ -3,6 +3,7 @@ import { GoogleMap, Marker, LoadScript } from "@react-google-maps/api";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { MapStyled } from "./MapStyles";
+
 interface MapProps {
   position: {
     latitude: number | undefined;
@@ -20,7 +21,7 @@ const Map: FC<MapProps> = (props) => {
     longitude = -84.35114426079765,
   } = props.position;
   const { allBusStops } = useSelector((state: RootState) => state.global);
-  console.log(props.position);
+
   return (
     <MapStyled w={{ base: "97%", lg: "800px" }} height={{ base: 400, md: 600 }}>
       <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_KEY!}>
@@ -30,7 +31,7 @@ const Map: FC<MapProps> = (props) => {
             margin: "0 auto",
           }}
           center={{ lat: latitude, lng: longitude }}
-          zoom={10}
+          zoom={14}
         >
           <>
             <Marker
@@ -40,14 +41,19 @@ const Map: FC<MapProps> = (props) => {
                 lng: longitude,
               }}
             />
-            {allBusStops.map((stop) => {
+            {allBusStops.map((stop, i) => {
               return (
                 <Marker
-                  key={stop.STOPID}
+                  title={"HELLO"}
+                  key={stop.BLOCKID + i}
                   draggable={false}
                   position={{
                     lat: parseFloat(stop.LATITUDE),
                     lng: parseFloat(stop.LONGITUDE),
+                  }}
+                  icon={{
+                    url:
+                      "http://maps.google.com/mapfiles/ms/icons/blue-dot.png",
                   }}
                 />
               );

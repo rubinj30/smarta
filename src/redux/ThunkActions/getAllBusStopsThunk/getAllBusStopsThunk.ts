@@ -9,6 +9,7 @@ export const getAllBusStopsThunk = (): RootThunk => async (dispatch) => {
     // TODO: uncomment and figure out how to avoid rate limiting. Cache on server or redux-persist.
     // const buses = await getAllBusStops();
     dispatch(setAllBusStops(mockBusRoutes));
+    // dispatch(setAllBusStops(buses))
   } catch {
     // render toast error
   } finally {
