@@ -3,6 +3,7 @@ import { GoogleMap, Marker, LoadScript } from "@react-google-maps/api";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { MapStyled } from "./MapStyles";
+import { Legend } from "./Legend/Legend";
 
 interface MapProps {
   position: {
@@ -62,6 +63,7 @@ const Map: FC<MapProps> = (props) => {
           <></>
         </GoogleMap>
       </LoadScript>
+      <Legend />
     </MapStyled>
   );
 };

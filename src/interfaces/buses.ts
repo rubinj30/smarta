@@ -11,4 +11,5 @@ export interface BusStop {
   TIMEPOINT: string;
   TRIPID: string;
   VEHICLE: string;
+  distance: number;
 }

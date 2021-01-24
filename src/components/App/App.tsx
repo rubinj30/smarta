@@ -6,22 +6,23 @@ import { usePosition } from "use-position";
 import { useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { getAllBusStopsThunk } from "../../redux/ThunkActions/getAllBusStopsThunk/getAllBusStopsThunk";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Provider } from "react-redux";
 
-import { store } from "../../redux/store";
+import { RootState, store } from "../../redux/store";
 import { Header } from "../Header/Header";
 import theme from "../../theme";
-import { setError } from "../../redux/Features/Global/globalSlice";
 import Map from "../Map/Map";
+import { Buses } from "../Buses/Buses";
 
 export const App = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const dispatch = useDispatch();
   const position = usePosition(false);
+  const { loading } = useSelector((state: RootState) => state.global);
 
   useEffect(() => {
-    dispatch(getAllBusStopsThunk());
+    dispatch(getAllBusStopsThunk(position));
     // if (!localStorage.getItem('position')) {
     //   const position = usePosition(false);
     //   if (position.errorMessage) {
@@ -36,24 +37,22 @@ export const App = () => {
       <Header onOpen={onOpen} />
       <Router>
         <Sidebar open={isOpen} onOpen={onOpen} onClose={onClose} />
-        <Switch>
-          <Route exact path="/">
-            <Map position={position} />
-          </Route>
-          <Route exact path="/buses">
-            <Buses />
-          </Route>
-          <Route>
-            <Homepage />
-          </Route>
-        </Switch>
+        {loading ? (
+          <Switch>
+            <Route exact path="/">
+              <Map position={position} />
+            </Route>
+            <Route exact path="/buses">
+              <Buses />
+            </Route>
+            <Route>
+              <Homepage />
+            </Route>
+          </Switch>
+        ) : null}
       </Router>
     </ChakraProvider>
   );
-};
-
-export const Buses = () => {
-  return <div> Buses</div>;
 };
 
 const StoreContainer = () => {
