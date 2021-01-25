@@ -11,5 +11,8 @@ export interface BusStop {
   TIMEPOINT: string;
   TRIPID: string;
   VEHICLE: string;
+}
+
+export interface BusStopWithDistance extends BusStop {
   distance: number;
 }

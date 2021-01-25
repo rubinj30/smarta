@@ -3,20 +3,20 @@ import {
   Drawer,
   DrawerContent,
   DrawerOverlay,
-  useColorMode,
+  Flex,
+  Text,
 } from "@chakra-ui/react";
 import React from "react";
 import { FC, useState } from "react";
 import { FaTrain, FaWindowClose } from "react-icons/fa";
-// import { ColorModeSwitcher } from "../../ColorModeSwitcher";
 import {
   DrawerFooterStyled,
   DrawerHeaderStyled,
   FadeStyled,
-  SettingsIconStyled,
 } from "./SidebarStyles";
 import { SidebarBody } from "./SidebarBody/SidebarBody";
 import { ColorModeSwitcher } from "../../ColorModeSwitcher";
+import { SettingsIcon } from "@chakra-ui/icons";
 
 export interface SidebarProps {
   open: boolean;
@@ -44,9 +44,14 @@ export const Sidebar: FC<SidebarProps> = (props) => {
           </DrawerHeaderStyled>
           <SidebarBody onClose={onClose} />
           <DrawerFooterStyled>
-            <SettingsIconStyled
+            <Flex
+              alignSelf="flex-end"
+              alignItems="center"
               onClick={() => setSettingsOpen(!settingsOpen)}
-            />
+            >
+              <Text marginRight={2}>Settings</Text>
+              <SettingsIcon />
+            </Flex>
             <FadeStyled in={settingsOpen}>
               <Box p="5px" w="100%" h="100px" borderTop="1px solid #E2E8F0">
                 <ColorModeSwitcher justifySelf="flex-end" />

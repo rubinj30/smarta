@@ -1,4 +1,5 @@
 import axios from "axios";
+import { BusStop } from "../../interfaces";
 
 export const proxy_url = "https://cors-anywhere.herokuapp.com/";
 export const BUS_URL_BASE =
@@ -12,7 +13,7 @@ export const BUS_BY_ROUTE = `${proxy_url}${BUS_URL_BASE}/GetBusByRoute`;
 
 export const getAllBusStops = async () => {
   try {
-    const response = await axios.get(ALL_BUSES_URL);
+    const response = await axios.get<BusStop[]>(ALL_BUSES_URL);
     return response.data;
   } catch (error) {
     throw error.response;

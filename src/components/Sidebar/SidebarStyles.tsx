@@ -1,5 +1,4 @@
-import { SettingsIcon } from "@chakra-ui/icons";
-import { DrawerFooter, DrawerHeader, Fade, Text } from "@chakra-ui/react";
+import { DrawerFooter, DrawerHeader, Fade, Flex, Text } from "@chakra-ui/react";
 import styled from "@emotion/styled";
 
 export const DrawerHeaderStyled = styled(DrawerHeader)`
@@ -24,10 +23,6 @@ export const SettingsStyled = styled.div`
   border: 1px solid #e2e8f0;
   height: 100px;
   padding: 1.5rem;
-`;
-
-export const SettingsIconStyled = styled(SettingsIcon)`
-  align-self: flex-end;
 `;
 
 export const FadeStyled = styled(Fade)`

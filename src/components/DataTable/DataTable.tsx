@@ -1,5 +1,5 @@
 import MUIDataTable from "mui-datatables";
-import React, { FC } from "react";
+import { FC } from "react";
 import { BusStop } from "../../interfaces";
 
 interface Column {
@@ -22,9 +22,15 @@ export const DataTable: FC<DataTableProps> = (props) => {
       columns={columns}
       options={{
         responsive: "standard",
-        searchOpen: true,
         download: false,
         print: false,
+        sortOrder: {
+          name: "distance",
+          direction: "asc",
+        },
+        onRowClick: (val: any) => {
+          console.log("onRowClick", val);
+        },
       }}
     />
   );
