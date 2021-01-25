@@ -5,7 +5,6 @@ export const getAllTrainStopsThunk = (position: any): RootThunk => async (
   dispatch
 ) => {
   dispatch(setLoading(true));
-  const { latitude, longitude } = position;
   try {
     // will fetch trains similar to buses and add to global state
   } catch (error) {

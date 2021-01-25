@@ -10,11 +10,11 @@ const items = [
   },
   {
     text: "Nearest Stops",
-    route: "/",
+    route: "/nearest",
   },
   {
-    text: "Service Status",
-    route: "/status",
+    text: "Weather",
+    route: "/weather",
   },
   {
     text: "Bus Routes",

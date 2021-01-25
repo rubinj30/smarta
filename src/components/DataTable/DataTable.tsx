@@ -28,9 +28,6 @@ export const DataTable: FC<DataTableProps> = (props) => {
           name: "distance",
           direction: "asc",
         },
-        onRowClick: (val: any) => {
-          console.log("onRowClick", val);
-        },
       }}
     />
   );
