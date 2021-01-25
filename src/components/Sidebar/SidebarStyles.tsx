@@ -1,4 +1,4 @@
-import { DrawerFooter, DrawerHeader, Fade, Flex, Text } from "@chakra-ui/react";
+import { Box, DrawerFooter, DrawerHeader, Text } from "@chakra-ui/react";
 import styled from "@emotion/styled";
 
 export const DrawerHeaderStyled = styled(DrawerHeader)`
@@ -23,10 +23,6 @@ export const SettingsStyled = styled.div`
   border: 1px solid #e2e8f0;
   height: 100px;
   padding: 1.5rem;
-`;
-
-export const FadeStyled = styled(Fade)`
-  width: 100%;
 `;
 
 export const SidebarTextItem = styled(Text)`

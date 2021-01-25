@@ -5,19 +5,22 @@ import { FaBus } from "react-icons/fa";
 
 interface HeaderProps {
   onOpen: () => void;
+  btnRef: any;
 }
 
 export const Header: FC<HeaderProps> = (props) => {
-  const { onOpen } = props;
+  const { onOpen, btnRef } = props;
   return (
     <Box w="100%">
       <Center flex="1" height={{ base: "3rem", md: "4rem", lg: "5rem" }}>
-        <HiMenuStyled
-          cursor="pointer"
-          data-testid="hamburger-icon"
-          size="2em"
-          onClick={onOpen}
-        />
+        <Box ref={btnRef} position="absolute" left={0}>
+          <HiMenuStyled
+            cursor="pointer"
+            data-testid="hamburger-icon"
+            size="2em"
+            onClick={onOpen}
+          />
+        </Box>
         <Heading as="h3" size="lg" display="flex" alignItems="center">
           <span style={{ paddingRight: 10 }}>SMARTA</span> <FaBus />
           <span style={{ paddingLeft: 10 }}>Bus</span>

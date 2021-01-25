@@ -1,6 +1,7 @@
-import { Tooltip, Typography } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 import { format } from "date-fns";
 import React from "react";
+import { WindowSize } from "../interfaces";
 
 export const formatTimeForColumn = (value: any) => {
   const time = new Date(value);
@@ -8,72 +9,62 @@ export const formatTimeForColumn = (value: any) => {
   return formattedTime;
 };
 
-export const allBusColumns = [
-  {
-    label: "from",
-    name: "distance",
-    options: {
-      width: 100,
-      customBodyRender: (value: number) => `${value.toFixed(1)}mi`,
+export const genBusColumns = (size: WindowSize) => {
+  const isLarge = size === "large";
+  const isSmall = size === "small";
+  const locationTextProps = isSmall
+    ? {
+        overflow: "hidden",
+        textOverflow: "ellipsis",
+        whiteSpace: "nowrap",
+        maxWidth: 150,
+      }
+    : { background: "none" };
+  let busColumns = [
+    {
+      label: `${!isSmall ? "distance " : ""}from`,
+      name: "distance",
+      options: {
+        customBodyRender: (value: number) => `${value.toFixed(1)}mi`,
+      },
     },
-  },
-  {
-    // TODO: still a little unsure of what this field exactly is for
-    label: "last pickup",
-    name: "MSGTIME",
-    options: {
-      customBodyRender: (value: any) => formatTimeForColumn(value),
+    {
+      // TODO: still a little unsure of what this field exactly is for
+      label: `last pickup ${isLarge ? "time" : ""}`,
+      name: "MSGTIME",
+      options: {
+        customBodyRender: (value: any) => formatTimeForColumn(value),
+      },
     },
-  },
-  {
-    label: "location",
-    name: "TIMEPOINT",
-  },
-  {
-    label: "route",
-    name: "ROUTE",
-    width: 100,
-  },
-  // {
-  //     label: "VEHICLE",
-  //     name: "VEHICLE",
+    {
+      label: "location",
+      name: "TIMEPOINT",
+      options: {
+        customBodyRender: (value: string) => {
+          // @ts-ignore
+          return (
+            <Typography style={{ ...locationTextProps }}>{value}</Typography>
+          );
+        },
+      },
+    },
+    {
+      label: `route${!isSmall ? " #" : ""}`,
+      name: "ROUTE",
+    },
+    {
+      label: "direction",
+      name: "DIRECTION",
+    },
+  ];
+  isLarge &&
+    busColumns.push({
+      label: "Stop ID",
+      name: "STOPID",
+    });
+  return busColumns;
+};
 
-  // },
-  // {
-  //   label: "TRIPID",
-  //   name: "TRIPID",
-  // },
+export const distanceRender = (val: number) => {};
 
-  // // {
-  // //     label: "STOPID",
-  // //     name: "STOPID",
-
-  // // },
-  // {
-  //   label: "lng",
-  //   name: "LONGITUDE",
-  // },
-  // {
-  //   label: "lat",
-  //   name: "LATITUDE",
-  // },
-  {
-    label: "direction",
-    name: "DIRECTION",
-  },
-  // {
-  //     label: "BLOCK_ABBR",
-  //     name: "BLOCK_ABBR",
-
-  // },
-  // {
-  //     label: "BLOCKID",
-  //     name: "BLOCKID",
-
-  // },
-  // {
-  //     label: "adherence",
-  //     name: "ADHERENCE",
-
-  // },
-];
+export const allBusColumns = () => {};

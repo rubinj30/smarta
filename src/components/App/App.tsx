@@ -2,7 +2,7 @@ import * as React from "react";
 import { ChakraProvider, useDisclosure } from "@chakra-ui/react";
 import { Sidebar } from "../Sidebar/Sidebar";
 import { usePosition } from "use-position";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { getAllBusStopsThunk } from "../../redux/ThunkActions/getAllBusStopsThunk/getAllBusStopsThunk";
 import { useDispatch, useSelector } from "react-redux";
@@ -19,33 +19,23 @@ import { BusStopDetail } from "../BusStopDetail/BusStopDetail";
 
 export const App = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const btnRef = useRef();
   const dispatch = useDispatch();
-  const position = usePosition(false, {
-    enableHighAccuracy: true,
-    maximumAge: 60000,
-    timeout: 10000,
-  });
-  const { allBusStops } = useSelector((state: RootState) => state.global);
-
+  const position = usePosition(false);
   useEffect(() => {
-    if (allBusStops.length < 1) {
-      dispatch(getAllBusStopsThunk());
-    }
-    // dispatch(getAllBusStopsThunk(position));
-    // if (!localStorage.getItem('position')) {
-    //   const position = usePosition(false);
-    //   if (position.errorMessage) {
-    //     dispatch(setError('Unable to get user\'s location'))
-    //   }
-    //   localStorage.setItem('position', position)
-    // }
-  }, [position]);
+    dispatch(getAllBusStopsThunk());
+  }, []);
 
   return (
     <ChakraProvider theme={theme}>
-      <Header onOpen={onOpen} />
+      <Header onOpen={onOpen} btnRef={btnRef} />
       <Router>
-        <Sidebar open={isOpen} onOpen={onOpen} onClose={onClose} />
+        <Sidebar
+          open={isOpen}
+          onOpen={onOpen}
+          onClose={onClose}
+          btnRef={btnRef}
+        />
         <Routes position={position} />
       </Router>
     </ChakraProvider>

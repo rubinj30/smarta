@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import { GoogleMap, Marker, LoadScript } from "@react-google-maps/api";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
@@ -17,12 +17,15 @@ interface MapProps {
 }
 
 const Map: FC<MapProps> = (props) => {
-  // default to Cox Headquarters if nothing provided
   const {
     latitude = defaultCoords.lat,
     longitude = defaultCoords.lng,
   } = props.position;
   const { allBusStops } = useSelector((state: RootState) => state.global);
+
+  useEffect(() => {
+    console.log("helloooo", latitude, longitude);
+  }, [latitude, longitude]);
 
   return (
     <MapStyled w={{ base: "97%", lg: "800px" }} height={{ base: 400, md: 600 }}>
@@ -46,7 +49,6 @@ const Map: FC<MapProps> = (props) => {
             {allBusStops.map((stop, i) => {
               return (
                 <Marker
-                  title={"HELLO"}
                   key={stop.BLOCKID + i}
                   draggable={false}
                   position={{

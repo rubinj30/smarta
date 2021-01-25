@@ -9,3 +9,5 @@ export interface Position {
   error: any;
   errorMessage?: string | undefined;
 }
+
+export type WindowSize = "small" | "medium" | "large";

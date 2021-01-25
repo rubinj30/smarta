@@ -9,11 +9,7 @@ import {
 import React from "react";
 import { FC, useState } from "react";
 import { FaBus, FaWindowClose } from "react-icons/fa";
-import {
-  DrawerFooterStyled,
-  DrawerHeaderStyled,
-  FadeStyled,
-} from "./SidebarStyles";
+import { DrawerFooterStyled, DrawerHeaderStyled } from "./SidebarStyles";
 import { SidebarBody } from "./SidebarBody/SidebarBody";
 import { ColorModeSwitcher } from "../../ColorModeSwitcher";
 import { SettingsIcon } from "@chakra-ui/icons";
@@ -22,10 +18,12 @@ export interface SidebarProps {
   open: boolean;
   onOpen: () => void;
   onClose: () => void;
+  btnRef: any;
 }
 
 export const Sidebar: FC<SidebarProps> = (props) => {
-  const { open, onClose } = props;
+  const { open, onClose, btnRef } = props;
+
   const [settingsOpen, setSettingsOpen] = useState<boolean>(false);
   return (
     <Drawer
@@ -34,6 +32,7 @@ export const Sidebar: FC<SidebarProps> = (props) => {
       onOverlayClick={onClose}
       isFullHeight={true}
       placement="left"
+      finalFocusRef={btnRef}
     >
       <DrawerOverlay>
         <DrawerContent>
@@ -57,11 +56,13 @@ export const Sidebar: FC<SidebarProps> = (props) => {
               <Text marginRight={2}>Settings</Text>
               <SettingsIcon />
             </Flex>
-            <FadeStyled in={settingsOpen}>
-              <Box p="5px" w="100%" h="100px" borderTop="1px solid #E2E8F0">
-                <ColorModeSwitcher justifySelf="flex-end" />
+            {settingsOpen ? (
+              <Box w="100%">
+                <Box p="5px" w="100%" h="100px" borderTop="1px solid #E2E8F0">
+                  <ColorModeSwitcher justifySelf="flex-end" />
+                </Box>
               </Box>
-            </FadeStyled>
+            ) : null}
           </DrawerFooterStyled>
         </DrawerContent>
       </DrawerOverlay>
