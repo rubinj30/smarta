@@ -9,18 +9,21 @@ const items = [
     route: "/",
   },
   {
-    text: "Nearest Stops",
-    route: "/nearest",
+    text: "Buses",
+    route: "/buses",
   },
   {
     text: "Weather",
     route: "/weather",
   },
   {
-    text: "Bus Routes",
-    route: "/buses",
+    text: "Bus Detail",
+    route: "/bus-detail",
   },
-
+  // {
+  //   text: "Nearest Stops",
+  //   route: "/nearest",
+  // },
   // TODO: add backend and save favorites
   // {
   //     text: 'Favorites',

@@ -5,7 +5,6 @@ export const DrawerHeaderStyled = styled(DrawerHeader)`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
   .close-icon {
     justify-self: flex-end;
   }
@@ -27,6 +26,7 @@ export const SettingsStyled = styled.div`
 
 export const SidebarTextItem = styled(Text)`
   cursor: pointer;
+  margin: 20px 4px;
   &:hover {
     transition: 0.1s;
   }

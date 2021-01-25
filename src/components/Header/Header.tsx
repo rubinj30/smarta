@@ -11,7 +11,7 @@ interface HeaderProps {
 export const Header: FC<HeaderProps> = (props) => {
   const { onOpen, btnRef } = props;
   return (
-    <Box w="100%">
+    <Box w="100%" h={70} display="flex" alignItems="center">
       <Center flex="1" height={{ base: "3rem", md: "4rem", lg: "5rem" }}>
         <Box ref={btnRef} position="absolute" left={0}>
           <HiMenuStyled
@@ -21,7 +21,7 @@ export const Header: FC<HeaderProps> = (props) => {
             onClick={onOpen}
           />
         </Box>
-        <Heading as="h3" size="lg" display="flex" alignItems="center">
+        <Heading as="h1" size="xl" display="flex" alignItems="center">
           <span style={{ paddingRight: 10 }}>SMARTA</span> <FaBus />
           <span style={{ paddingLeft: 10 }}>Bus</span>
         </Heading>

@@ -36,17 +36,18 @@ export const Sidebar: FC<SidebarProps> = (props) => {
     >
       <DrawerOverlay>
         <DrawerContent>
-          <DrawerHeaderStyled borderBottomWidth="1px">
-            <FaBus />
-            <h3>SMARTA</h3>
+          <DrawerHeaderStyled borderBottomWidth="1px" height={100}>
+            <FaBus size={50} />
+            <h2>SMARTA</h2>
             <FaWindowClose
               onClick={onClose}
               className="close-icon"
               cursor="pointer"
+              size={50}
             />
           </DrawerHeaderStyled>
           <SidebarBody onClose={onClose} />
-          <DrawerFooterStyled>
+          <DrawerFooterStyled marginBottom={9} fontSize="xl">
             <Flex
               alignSelf="flex-end"
               alignItems="center"
