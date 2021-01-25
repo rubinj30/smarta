@@ -16,7 +16,7 @@ export const genBusColumns = (size: WindowSize) => {
     ? {
         overflow: "hidden",
         textOverflow: "ellipsis",
-        whiteSpace: "nowrap",
+        // whiteSpace: "nowrap",
         maxWidth: 150,
       }
     : { background: "none" };
@@ -49,14 +49,15 @@ export const genBusColumns = (size: WindowSize) => {
       },
     },
     {
-      label: `route${!isSmall ? " #" : ""}`,
-      name: "ROUTE",
-    },
-    {
       label: "direction",
       name: "DIRECTION",
     },
   ];
+  !isSmall &&
+    busColumns.push({
+      label: `route${!isSmall ? " #" : ""}`,
+      name: "ROUTE",
+    });
   isLarge &&
     busColumns.push({
       label: "Stop ID",

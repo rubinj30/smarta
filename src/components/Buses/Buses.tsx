@@ -8,9 +8,9 @@ import { appendDistanceToStops } from "../../utils/appendDistanceToStops";
 import { usePosition } from "use-position";
 import { genBusColumns } from "../../utils/allBusColumns";
 import { genWindowSize } from "../../utils/genWindowSize";
+import { useWindowWidth } from "../../hooks/useWindowWidth";
 
 export const Buses = () => {
-  const [width, setWidth] = React.useState(window.innerWidth);
   const { allBusStops } = useSelector((state: RootState) => state.global);
   const position = usePosition(false);
   const stopsWithDistance = appendDistanceToStops(
@@ -18,14 +18,10 @@ export const Buses = () => {
     position as Position
   );
 
-  React.useEffect(() => {
-    // using this to dynamically generate different column headers, contents since the widths are not controllable with MUIDatatable
-    function handleResize() {
-      setWidth(window.innerWidth);
-    }
-    window.addEventListener("resize", handleResize);
-  });
+  // custom hook to listen and return window width
+  const width = useWindowWidth();
 
+  // generates breakpoint name for columns
   const windowSize = genWindowSize(width);
 
   return (

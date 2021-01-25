@@ -21,6 +21,7 @@ export const DataTable: FC<DataTableProps> = (props) => {
       data={data}
       columns={columns}
       options={{
+        selectableRows: "none",
         responsive: "standard",
         download: false,
         print: false,
