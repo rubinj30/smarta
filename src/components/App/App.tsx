@@ -16,6 +16,7 @@ import theme from "../../theme";
 import Map from "../Map/Map";
 import { Buses } from "../Buses/Buses";
 import { BusStopDetail } from "../BusStopDetail/BusStopDetail";
+import { Position } from "../../interfaces";
 
 export const App = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -42,7 +43,7 @@ export const App = () => {
     </ChakraProvider>
   );
 };
-export const Routes = ({ position }: any) => {
+export const Routes = ({ position }: { position: Position }) => {
   return (
     <Switch>
       <Route exact path="/">

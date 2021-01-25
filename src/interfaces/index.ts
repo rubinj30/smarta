@@ -6,7 +6,7 @@ export interface Position {
   timestamp: number | undefined;
   accuracy: number | undefined;
   speed?: number | null;
-  error: any;
+  error?: any;
   errorMessage?: string | undefined;
 }
 

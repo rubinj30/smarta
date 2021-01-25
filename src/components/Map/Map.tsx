@@ -5,22 +5,15 @@ import { RootState } from "../../redux/store";
 import { MapStyled } from "./MapStyles";
 import { Legend } from "./Legend/Legend";
 import { defaultCoords } from "../../utils/defaultCoords";
+import { Position } from "../../interfaces";
 
 interface MapProps {
-  position: {
-    latitude: number | undefined;
-    longitude: number | undefined;
-    timestamp: number | undefined;
-    accuracy: number | undefined;
-    errorMessage: string | undefined;
-  };
+  position: Position;
 }
 
 const Map: FC<MapProps> = (props) => {
-  const {
-    latitude = defaultCoords.lat,
-    longitude = defaultCoords.lng,
-  } = props.position;
+  const { position } = props;
+  const { latitude, longitude } = position;
   const { allBusStops } = useSelector((state: RootState) => state.global);
 
   useEffect(() => {
@@ -35,7 +28,10 @@ const Map: FC<MapProps> = (props) => {
             height: "100%",
             margin: "0 auto",
           }}
-          center={{ lat: latitude, lng: longitude }}
+          center={{
+            lat: latitude || defaultCoords.lat,
+            lng: longitude || defaultCoords.lng,
+          }}
           zoom={14}
         >
           <>
