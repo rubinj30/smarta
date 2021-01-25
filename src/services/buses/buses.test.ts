@@ -1,8 +1,8 @@
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
 import {
-  mockBusRoutes,
-  mockBusStopsForRoute,
+  MOCK_BUS_STOPS,
+  MOCK_BUS_STOPSForRoute,
 } from "../../testUtils/__mocks__/bus";
 import {
   getAllBusStops,
@@ -16,16 +16,16 @@ const mockAdapter = new MockAdapter(axios);
 describe("Bus related service calls", () => {
   describe("Successes", () => {
     it("getAllBusStops should get all buses", async () => {
-      mockAdapter.onGet(ALL_BUSES_URL).reply(200, mockBusRoutes);
+      mockAdapter.onGet(ALL_BUSES_URL).reply(200, MOCK_BUS_STOPS);
       const buses = await getAllBusStops();
-      expect(buses).toEqual(mockBusRoutes);
+      expect(buses).toEqual(MOCK_BUS_STOPS);
     });
     it("getBusByRoute should get all bus stops for a specific route", async () => {
-      const mockBus = mockBusRoutes[1];
+      const mockBus = MOCK_BUS_STOPS[1];
       const mockUrl = `${BUS_BY_ROUTE}/${mockBus.ROUTE}`;
-      mockAdapter.onGet(mockUrl).reply(200, mockBusStopsForRoute);
+      mockAdapter.onGet(mockUrl).reply(200, MOCK_BUS_STOPSForRoute);
       const buses = await getBusByRoute(mockBus.ROUTE);
-      expect(buses).toEqual(mockBusStopsForRoute);
+      expect(buses).toEqual(MOCK_BUS_STOPSForRoute);
     });
   });
   describe("Failures", () => {

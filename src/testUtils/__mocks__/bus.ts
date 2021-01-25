@@ -1,4 +1,4 @@
-export const mockBusRoutes = [
+export const MOCK_BUS_STOPS = [
   {
     ADHERENCE: "-2",
     BLOCKID: "167",
@@ -13,6 +13,7 @@ export const mockBusRoutes = [
     TRIPID: "7040182",
     VEHICLE: "1469",
   },
+
   {
     ADHERENCE: "-3",
     BLOCKID: "376",
@@ -26,6 +27,20 @@ export const mockBusRoutes = [
     TIMEPOINT: "Fulton Ind Blvd & MLK Jr Dr",
     TRIPID: "0",
     VEHICLE: "1671",
+  },
+  {
+    ADHERENCE: "5",
+    BLOCKID: "167",
+    BLOCK_ABBR: "178-2",
+    DIRECTION: "Northbound",
+    LATITUDE: "34.0685661",
+    LONGITUDE: "-84.2656455",
+    MSGTIME: "1/24/2021 11:55:07 AM",
+    ROUTE: "185",
+    STOPID: "212052",
+    TIMEPOINT: "Old Milton Pky & Northwinds Pky",
+    TRIPID: "7040209",
+    VEHICLE: "1454",
   },
   {
     ADHERENCE: "-25",
@@ -83,20 +98,7 @@ export const mockBusRoutes = [
     TRIPID: "7040221",
     VEHICLE: "1678",
   },
-  {
-    ADHERENCE: "5",
-    BLOCKID: "167",
-    BLOCK_ABBR: "178-2",
-    DIRECTION: "Northbound",
-    LATITUDE: "34.0685661",
-    LONGITUDE: "-84.2656455",
-    MSGTIME: "1/24/2021 11:55:07 AM",
-    ROUTE: "185",
-    STOPID: "212052",
-    TIMEPOINT: "Old Milton Pky & Northwinds Pky",
-    TRIPID: "7040209",
-    VEHICLE: "1454",
-  },
+
   {
     ADHERENCE: "-18",
     BLOCKID: "248",
@@ -141,7 +143,7 @@ export const mockBusRoutes = [
   },
 ];
 
-export const mockBusStopsForRoute = [
+export const MOCK_BUS_STOPSForRoute = [
   {
     ADHERENCE: "0",
     BLOCKID: "375",

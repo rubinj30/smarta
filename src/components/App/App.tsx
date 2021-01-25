@@ -28,7 +28,7 @@ export const App = () => {
 
   useEffect(() => {
     if (allBusStops.length < 1) {
-      dispatch(getAllBusStopsThunk(position));
+      dispatch(getAllBusStopsThunk());
     }
     // dispatch(getAllBusStopsThunk(position));
     // if (!localStorage.getItem('position')) {

@@ -5,5 +5,7 @@ export interface Position {
   longitude: number | undefined;
   timestamp: number | undefined;
   accuracy: number | undefined;
-  errorMessage: string | undefined;
+  speed?: number | null;
+  error: any;
+  errorMessage?: string | undefined;
 }

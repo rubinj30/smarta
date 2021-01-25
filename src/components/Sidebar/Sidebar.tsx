@@ -8,7 +8,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { FC, useState } from "react";
-import { FaTrain, FaWindowClose } from "react-icons/fa";
+import { FaBus, FaWindowClose } from "react-icons/fa";
 import {
   DrawerFooterStyled,
   DrawerHeaderStyled,
@@ -38,7 +38,7 @@ export const Sidebar: FC<SidebarProps> = (props) => {
       <DrawerOverlay>
         <DrawerContent>
           <DrawerHeaderStyled borderBottomWidth="1px">
-            <FaTrain />
+            <FaBus />
             <h3>Transit</h3>
             <FaWindowClose onClick={onClose} className="close-icon" />
           </DrawerHeaderStyled>
