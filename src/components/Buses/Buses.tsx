@@ -1,7 +1,7 @@
 import { Box } from "@chakra-ui/react";
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
-import { BusStop, Position } from "../../interfaces";
+import { Position } from "../../interfaces";
 import { RootState } from "../../redux/store";
 import { DataTable } from "../DataTable/DataTable";
 import { appendDistanceToStops } from "../../utils/appendDistanceToStops";
@@ -16,7 +16,7 @@ export const Buses = () => {
     position as Position
   );
   return (
-    <Box margin={2}>
+    <Box margin={{ base: 1, md: 4, lg: 10 }}>
       <DataTable
         title="All Bus Stops"
         data={stopsWithDistance}

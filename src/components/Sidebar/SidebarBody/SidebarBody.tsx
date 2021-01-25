@@ -46,7 +46,7 @@ export const SidebarBody: FC<SidebarBodyProps> = (props) => {
       onClick={() => onSelectItem(item.route)}
       fontSize="xl"
       _hover={{
-        color: "teal.500",
+        color: "teal.400",
       }}
     >
       {item.text}

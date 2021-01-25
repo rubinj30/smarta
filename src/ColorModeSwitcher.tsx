@@ -4,6 +4,7 @@ import {
   useColorModeValue,
   IconButton,
   IconButtonProps,
+  Flex,
 } from "@chakra-ui/react";
 import { FaMoon, FaSun } from "react-icons/fa";
 
@@ -15,10 +16,7 @@ export const ColorModeSwitcher: React.FC<ColorModeSwitcherProps> = (props) => {
   const SwitchIcon = useColorModeValue(FaMoon, FaSun);
 
   return (
-    <div
-      style={{ display: "flex", alignItems: "center" }}
-      onClick={toggleColorMode}
-    >
+    <Flex alignItems="center" onClick={toggleColorMode} cursor="pointer">
       <IconButton
         size="md"
         fontSize="lg"
@@ -30,6 +28,6 @@ export const ColorModeSwitcher: React.FC<ColorModeSwitcherProps> = (props) => {
         {...props}
       />
       <div>Switch to {text} mode</div>
-    </div>
+    </Flex>
   );
 };

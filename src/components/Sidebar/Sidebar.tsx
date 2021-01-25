@@ -39,8 +39,12 @@ export const Sidebar: FC<SidebarProps> = (props) => {
         <DrawerContent>
           <DrawerHeaderStyled borderBottomWidth="1px">
             <FaBus />
-            <h3>Transit</h3>
-            <FaWindowClose onClick={onClose} className="close-icon" />
+            <h3>SMARTA</h3>
+            <FaWindowClose
+              onClick={onClose}
+              className="close-icon"
+              cursor="pointer"
+            />
           </DrawerHeaderStyled>
           <SidebarBody onClose={onClose} />
           <DrawerFooterStyled>
@@ -48,6 +52,7 @@ export const Sidebar: FC<SidebarProps> = (props) => {
               alignSelf="flex-end"
               alignItems="center"
               onClick={() => setSettingsOpen(!settingsOpen)}
+              cursor="pointer"
             >
               <Text marginRight={2}>Settings</Text>
               <SettingsIcon />

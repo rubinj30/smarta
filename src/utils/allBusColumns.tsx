@@ -28,25 +28,6 @@ export const allBusColumns = [
   {
     label: "location",
     name: "TIMEPOINT",
-    options: {
-      customBodyRender: (value: string, meta: any) => {
-        console.log({ meta });
-        return (
-          <Tooltip title={value}>
-            <Typography
-              noWrap={true}
-              style={{
-                maxWidth: "150px",
-                overflow: "hidden",
-                textOverflow: "ellipsis",
-              }}
-            >
-              {value}
-            </Typography>
-          </Tooltip>
-        );
-      },
-    },
   },
   {
     label: "route",

@@ -32,7 +32,6 @@ export const FadeStyled = styled(Fade)`
 export const SidebarTextItem = styled(Text)`
   cursor: pointer;
   &:hover {
-    font-weight: 500;
-    transition: 0.2s;
+    transition: 0.1s;
   }
 `;

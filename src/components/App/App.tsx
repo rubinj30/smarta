@@ -1,7 +1,6 @@
 import * as React from "react";
 import { ChakraProvider, useDisclosure } from "@chakra-ui/react";
 import { Sidebar } from "../Sidebar/Sidebar";
-import { Homepage } from "../Homepage/Homepage";
 import { usePosition } from "use-position";
 import { useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -21,10 +20,12 @@ import { BusStopDetail } from "../BusStopDetail/BusStopDetail";
 export const App = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const dispatch = useDispatch();
-  const position = usePosition(false);
-  const { loading, allBusStops } = useSelector(
-    (state: RootState) => state.global
-  );
+  const position = usePosition(false, {
+    enableHighAccuracy: true,
+    maximumAge: 60000,
+    timeout: 10000,
+  });
+  const { allBusStops } = useSelector((state: RootState) => state.global);
 
   useEffect(() => {
     if (allBusStops.length < 1) {
@@ -45,10 +46,7 @@ export const App = () => {
       <Header onOpen={onOpen} />
       <Router>
         <Sidebar open={isOpen} onOpen={onOpen} onClose={onClose} />
-        {/* {loading ? ( */}
-        {/* TODO: can setup in global state so don't have to pass down with props */}
         <Routes position={position} />
-        {/* ) : null} */}
       </Router>
     </ChakraProvider>
   );

@@ -13,6 +13,7 @@ export const Header: FC<HeaderProps> = (props) => {
     <Box w="100%">
       <Center flex="1" height={{ base: "3rem", md: "4rem", lg: "5rem" }}>
         <HiMenuStyled
+          cursor="pointer"
           data-testid="hamburger-icon"
           size="2em"
           onClick={onOpen}
