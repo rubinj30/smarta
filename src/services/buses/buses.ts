@@ -1,15 +1,12 @@
 import axios from "axios";
 import { BusStop } from "../../interfaces";
 
-export const proxy_url = "https://cors-anywhere.herokuapp.com/";
 export const BUS_URL_BASE =
   "http://developer.itsmarta.com/BRDRestService/RestBusRealTimeService";
 
-// TODO: getting CORS errors for above URL while running locally, so setting up workaround for development
-// need to add condition to only proxy IF in dev
-export const ALL_BUSES_URL = `${proxy_url}${BUS_URL_BASE}/GetAllBus`;
+export const ALL_BUSES_URL = `${BUS_URL_BASE}/GetAllBus`;
 
-export const BUS_BY_ROUTE = `${proxy_url}${BUS_URL_BASE}/GetBusByRoute`;
+export const BUS_BY_ROUTE = `${BUS_URL_BASE}/GetBusByRoute`;
 
 export const getAllBusStops = async () => {
   try {
