@@ -14,9 +14,6 @@ export const genBusColumns = (size: WindowSize) => {
   const isSmall = size === "small";
   const locationTextProps = isSmall
     ? {
-        overflow: "hidden",
-        textOverflow: "ellipsis",
-        // whiteSpace: "nowrap",
         maxWidth: 150,
       }
     : { background: "none" };
@@ -51,21 +48,23 @@ export const genBusColumns = (size: WindowSize) => {
     {
       label: "direction",
       name: "DIRECTION",
+      options: {
+        customBodyRender: (value: string) =>
+          isSmall ? value.replace("bound", "") : value,
+      },
     },
   ];
+
   !isSmall &&
     busColumns.push({
       label: `route${!isSmall ? " #" : ""}`,
       name: "ROUTE",
-    });
+    } as any);
   isLarge &&
     busColumns.push({
       label: "Stop ID",
       name: "STOPID",
-    });
+    } as any);
+
   return busColumns;
 };
-
-export const distanceRender = (val: number) => {};
-
-export const allBusColumns = () => {};

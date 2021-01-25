@@ -9,6 +9,6 @@ export const useWindowWidth = () => {
       setWidth(window.innerWidth);
     }
     window.addEventListener("resize", handleResize);
-  });
+  }, []);
   return width;
 };

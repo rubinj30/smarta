@@ -8,11 +8,9 @@ import configureStore from "redux-mock-store";
 import thunk from "redux-thunk";
 
 import { RootState } from "../redux/store";
-import { MOCK_POLICY } from "./__mocks__/PasswordPolicy";
-import renderWithTranslations from "./renderComponentTranslations";
 
 export const defaultStore: Partial<RootState> = {
-  global: { loading: false, error: undefined, passwordPolicy: MOCK_POLICY },
+  global: { loading: false, error: undefined, allBusStops: [], position: {} },
 };
 
 function renderWithRedux(
@@ -29,7 +27,7 @@ function renderWithRedux(
 
   const wrapper: FC<{}> = ({ children }) => (
     <Provider store={reduxStore}>
-      <Router history={history}>{renderWithTranslations(children)}</Router>
+      <Router history={history}>{render(children)}</Router>
     </Provider>
   );
   const renderSub = render(ui, { wrapper }) as any;
