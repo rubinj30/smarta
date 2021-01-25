@@ -5,12 +5,12 @@ import { usePosition } from "use-position";
 import { useEffect, useRef } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { getAllBusStopsThunk } from "../../redux/ThunkActions/getAllBusStopsThunk/getAllBusStopsThunk";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Provider } from "react-redux";
 import { persistStore } from "redux-persist";
 import { PersistGate } from "redux-persist/integration/react";
 
-import { RootState, store } from "../../redux/store";
+import { store } from "../../redux/store";
 import { Header } from "../Header/Header";
 import theme from "../../theme";
 import Map from "../Map/Map";
@@ -26,6 +26,7 @@ export const App = () => {
     dispatch(getAllBusStopsThunk());
   }, []);
 
+  console.log({ position });
   return (
     <ChakraProvider theme={theme}>
       <Header onOpen={onOpen} btnRef={btnRef} />

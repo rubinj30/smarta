@@ -24,7 +24,7 @@ const Map: FC<MapProps> = (props) => {
   const { allBusStops } = useSelector((state: RootState) => state.global);
 
   useEffect(() => {
-    console.log("helloooo", latitude, longitude);
+    console.log("position", latitude, longitude);
   }, [latitude, longitude]);
 
   return (
