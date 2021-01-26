@@ -78,3 +78,18 @@ REACT_APP_MARTA_KEY={MARTA API KEY}
 REACT_APP_BUS_URL_BASE=https://cors-anywhere.herokuapp.com/http://developer.itsmarta.com/BRDRestService/RestBusRealTimeService
 REACT_APP_TRAIN_URL=https://cors-anywhere.herokuapp.com/http://developer.itsmarta.com/RealtimeTrain/RestServiceNextTrain
 ```
+
+Install dependencies
+```
+yarn install
+```
+
+Start application locally
+```
+yarn start
+```
+
+Run tests
+```
+yarn test
+```
