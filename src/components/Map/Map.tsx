@@ -27,6 +27,8 @@ const Map: FC<MapProps> = (props) => {
           mapContainerStyle={{
             height: "100%",
             margin: "0 auto",
+            minHeight: "400px",
+            minWidth: "400px",
           }}
           center={{
             lat: latitude || defaultCoords.lat,
@@ -38,7 +40,7 @@ const Map: FC<MapProps> = (props) => {
             <Marker
               key="my-position"
               position={{
-                lat: latitude && latitude + 0.0000001,
+                lat: latitude,
                 lng: longitude,
               }}
             />

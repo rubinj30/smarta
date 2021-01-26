@@ -5,14 +5,13 @@ import { Position } from "../../interfaces";
 import { RootState } from "../../redux/store";
 import { DataTable } from "../DataTable/DataTable";
 import { appendDistanceToStops } from "../../utils/appendDistanceToStops";
-import { usePosition } from "use-position";
-import { genBusColumns } from "../../utils/allBusColumns";
+import { genBusColumns } from "../../utils/genBusColumns";
 import { genWindowSize } from "../../utils/genWindowSize";
 import { useWindowWidth } from "../../hooks/useWindowWidth";
 
-export const Buses = () => {
+export const Buses = ({ position }: { position: Position }) => {
   const { allBusStops } = useSelector((state: RootState) => state.global);
-  const position = usePosition(false);
+
   const stopsWithDistance = appendDistanceToStops(
     allBusStops,
     position as Position
@@ -25,8 +24,9 @@ export const Buses = () => {
   const windowSize = genWindowSize(width);
 
   return (
-    <Box margin={{ base: 1, md: 4, lg: 10 }}>
+    <Box margin={{ base: 1, md: 4, lg: 10 }} data-testid="buses-data-table">
       <DataTable
+        data-testid="buses-data-table"
         title="All Bus Stops"
         data={stopsWithDistance}
         columns={genBusColumns(windowSize)}

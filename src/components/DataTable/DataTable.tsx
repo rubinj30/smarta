@@ -1,6 +1,6 @@
 import MUIDataTable from "mui-datatables";
 import { FC } from "react";
-import { BusStop } from "../../interfaces";
+import { BusStopWithDistance } from "../../interfaces";
 
 interface Column {
   label: string;
@@ -9,7 +9,8 @@ interface Column {
 
 interface DataTableProps {
   title: string;
-  data: BusStop[];
+  // add TrainStop in future so this table can be re-used
+  data: BusStopWithDistance[];
   columns: Column[];
 }
 

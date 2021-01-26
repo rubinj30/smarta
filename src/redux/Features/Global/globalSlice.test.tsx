@@ -1,4 +1,9 @@
-import globalReducer, { setError, setLoading } from "./globalSlice";
+import { MOCK_BUS_STOPS } from "../../../testUtils/__mocks__/bus";
+import globalReducer, {
+  setAllBusStops,
+  setError,
+  setLoading,
+} from "./globalSlice";
 
 describe("globalSlice", () => {
   it("should set loading to true", () => {
@@ -19,5 +24,10 @@ describe("globalSlice", () => {
     const action = setError("test error");
     const newState = globalReducer(undefined, action);
     expect(newState.error).toEqual("test error");
+  });
+  it("setAllBusStops should set all bus stops to state", () => {
+    const action = setAllBusStops(MOCK_BUS_STOPS);
+    const newState = globalReducer(undefined, action);
+    expect(newState.allBusStops).toEqual(MOCK_BUS_STOPS);
   });
 });

@@ -12,7 +12,7 @@ export const Routes = ({ position }: { position: Position }) => {
         <Map position={position} />
       </Route>
       <Route exact path="/buses">
-        <Buses />
+        <Buses position={position} />
       </Route>
       <Route path="/bus-detail">
         <BusStopDetail />

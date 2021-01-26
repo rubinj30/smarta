@@ -27,7 +27,7 @@ export const genBusColumns = (size: WindowSize) => {
     },
     {
       // TODO: still a little unsure of what this field exactly is for
-      label: `last pickup ${isLarge ? "time" : ""}`,
+      label: `last pickup${isLarge ? " time" : ""}`,
       name: "MSGTIME",
       options: {
         customBodyRender: (value: any) => formatTimeForColumn(value),

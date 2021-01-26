@@ -3,4 +3,5 @@ import { Box } from "@chakra-ui/react";
 
 export const MapStyled = styled(Box)`
   margin: 0 auto;
+  min-height: 400;
 `;

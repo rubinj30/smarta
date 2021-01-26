@@ -13,6 +13,7 @@ import { DrawerFooterStyled, DrawerHeaderStyled } from "./SidebarStyles";
 import { SidebarBody } from "./SidebarBody/SidebarBody";
 import { ColorModeSwitcher } from "../../ColorModeSwitcher";
 import { SettingsIcon } from "@chakra-ui/icons";
+import { Position } from "../../interfaces";
 
 export interface SidebarProps {
   open: boolean;

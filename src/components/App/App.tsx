@@ -3,7 +3,7 @@ import { ChakraProvider, useDisclosure } from "@chakra-ui/react";
 import { Sidebar } from "../Sidebar/Sidebar";
 import { usePosition } from "use-position";
 import { useEffect, useRef } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import { getAllBusStopsThunk } from "../../redux/ThunkActions/getAllBusStopsThunk/getAllBusStopsThunk";
 import { useDispatch } from "react-redux";
 import { Provider } from "react-redux";
@@ -13,10 +13,6 @@ import { PersistGate } from "redux-persist/integration/react";
 import { store } from "../../redux/store";
 import { Header } from "../Header/Header";
 import theme from "../../theme";
-import Map from "../Map/Map";
-import { Buses } from "../Buses/Buses";
-import { BusStopDetail } from "../BusStopDetail/BusStopDetail";
-import { Position } from "../../interfaces";
 import { Routes } from "../Routes/Routes";
 
 export const App = () => {
@@ -24,11 +20,11 @@ export const App = () => {
   const btnRef = useRef();
   const dispatch = useDispatch();
   const position = usePosition(false);
+
   useEffect(() => {
     dispatch(getAllBusStopsThunk());
   }, []);
 
-  console.log({ position });
   return (
     <ChakraProvider theme={theme}>
       <Header onOpen={onOpen} btnRef={btnRef} />

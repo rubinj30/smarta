@@ -1,7 +1,7 @@
 import { Position } from "../interfaces";
 import { MOCK_BUS_STOPS } from "../testUtils/__mocks__/bus";
 import { MOCK_POSITION } from "../testUtils/__mocks__/position";
-import { formatTimeForColumn } from "./allBusColumns";
+import { formatTimeForColumn, genBusColumns } from "./genBusColumns";
 import { appendDistanceToStops } from "./appendDistanceToStops";
 import { convertMetersToMiles } from "./convertMetersToMiles";
 import { organizeBusesByRoute } from "./organizeBusesByRoute";
@@ -61,6 +61,26 @@ describe("utils", () => {
           distance: 17.77306497771462,
         },
       ]);
+    });
+  });
+  describe("genBusColumns", () => {
+    it("small should generate 4 columns with condensed titles", () => {
+      const smallColumns = genBusColumns("small");
+      expect(smallColumns.length).toEqual(4);
+      expect(smallColumns[0].label).toEqual("from");
+      expect(smallColumns[1].label).toEqual("last pickup");
+    });
+    it("medium should generate 5 with less condensed titles", () => {
+      const medColumns = genBusColumns("medium");
+      expect(medColumns.length).toEqual(5);
+      expect(medColumns[0].label).toEqual("distance from");
+      expect(medColumns[1].label).toEqual("last pickup");
+    });
+    it("large should generate 5 columns with max length titles", () => {
+      const largeColumns = genBusColumns("large");
+      expect(largeColumns.length).toEqual(6);
+      expect(largeColumns[0].label).toEqual("distance from");
+      expect(largeColumns[1].label).toEqual("last pickup time");
     });
   });
 });

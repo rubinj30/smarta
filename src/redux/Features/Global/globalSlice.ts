@@ -5,7 +5,6 @@ export interface GlobalSlice {
   loading: boolean;
   error: string | undefined;
   allBusStops: BusStop[];
-  position: Position | undefined;
 }
 
 const globalSlice = createSlice({
@@ -14,7 +13,6 @@ const globalSlice = createSlice({
     loading: false,
     error: undefined,
     allBusStops: [],
-    position: undefined,
   } as GlobalSlice,
   reducers: {
     setLoading: (state, action: PayloadAction<boolean>) => {

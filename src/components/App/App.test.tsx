@@ -1,6 +1,6 @@
 import React from "react";
 import { fireEvent, screen } from "@testing-library/react";
-import { render } from "../../test-utils";
+import { render } from "../../testUtils/test-utils";
 import { App } from "./App";
 import { act } from "react-dom/test-utils";
 
