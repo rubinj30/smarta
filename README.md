@@ -15,6 +15,7 @@ I considered the 3rd challenge option, but I was getting a lot of errors when lo
 
 I considered setting up a full-stack application, caching and formatting the data there and then serving it up to my React front-end. But, for the purposes of time, I decided to just setup a front-end and deploy it via Heroku. 
 
+BUT, this is the real reason I chose this challenge - https://www.youtube.com/watch?v=ylXVITUc2AY
 
 #### Architectural Decisions
 As I've primarily worked on frontend React applications, i knew I'd do the majority of the heavy lifting in React. 
