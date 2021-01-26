@@ -1,7 +1,7 @@
 import axios from "axios";
 import { TrainArrival } from "../../interfaces";
 
-export let TRAIN_URL = `https://cors-anywhere.herokuapp.com/http://developer.itsmarta.com/RealtimeTrain/RestServiceNextTrain/GetRealtimeArrivals?apikey=${process.env.REACT_APP_MARTA_KEY}`;
+export let TRAIN_URL = `${process.env.REACT_APP_TRAIN_URL}/GetRealtimeArrivals?apikey=${process.env.REACT_APP_MARTA_KEY}`;
 
 export const getAllTrainArrivals = async () => {
   try {

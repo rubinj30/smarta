@@ -44,7 +44,7 @@ export const Legend = () => {
           }}
         >
           <img src={"http://maps.google.com/mapfiles/ms/icons/green-dot.png"} />
-          <span>Train Stops (coming soon)</span>
+          <span>Train Stops (data available but not on maps yet)</span>
         </Flex>
       </Box>
     </>
