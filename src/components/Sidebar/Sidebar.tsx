@@ -4,6 +4,7 @@ import {
   DrawerContent,
   DrawerOverlay,
   Flex,
+  Heading,
   Text,
 } from "@chakra-ui/react";
 import React from "react";
@@ -37,18 +38,20 @@ export const Sidebar: FC<SidebarProps> = (props) => {
     >
       <DrawerOverlay>
         <DrawerContent>
-          <DrawerHeaderStyled borderBottomWidth="1px" height={100}>
-            <FaBus size={50} />
-            <h2>SMARTA</h2>
+          <DrawerHeaderStyled borderBottomWidth="1px" height={120}>
+            <FaBus size={40} />
+            <Heading as="h1" size="xl" display="flex" alignItems="center">
+              SMARTA
+            </Heading>
             <FaWindowClose
               onClick={onClose}
               className="close-icon"
               cursor="pointer"
-              size={50}
+              size={40}
             />
           </DrawerHeaderStyled>
           <SidebarBody onClose={onClose} />
-          <DrawerFooterStyled marginBottom={9} fontSize="xl">
+          <DrawerFooterStyled fontSize="xl">
             <Flex
               alignSelf="flex-end"
               alignItems="center"

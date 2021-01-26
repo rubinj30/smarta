@@ -34,7 +34,7 @@ const Map: FC<MapProps> = (props) => {
             lat: latitude || defaultCoords.lat,
             lng: longitude || defaultCoords.lng,
           }}
-          zoom={14}
+          zoom={13}
         >
           <>
             <Marker

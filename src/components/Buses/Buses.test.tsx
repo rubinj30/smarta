@@ -39,8 +39,6 @@ describe("Buses", () => {
       store
     );
     screen.findByText(/All Bus Stops/);
-    // @ts-ignore
-    screen.debug(null, 20000);
   });
 
   it("should call appendDistanceToStops with bus data from store and position", () => {

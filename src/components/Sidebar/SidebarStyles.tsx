@@ -1,10 +1,11 @@
-import { Box, DrawerFooter, DrawerHeader, Text } from "@chakra-ui/react";
+import { DrawerFooter, DrawerHeader, Text } from "@chakra-ui/react";
 import styled from "@emotion/styled";
 
 export const DrawerHeaderStyled = styled(DrawerHeader)`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  min-height: 120px;
   .close-icon {
     justify-self: flex-end;
   }
@@ -14,6 +15,7 @@ export const DrawerFooterStyled = styled(DrawerFooter)`
   display: flex;
   flex-direction: column-reverse;
   width: 100%;
+  margin-bottom: 70px;
 `;
 
 export const SettingsStyled = styled.div`
