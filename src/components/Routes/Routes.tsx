@@ -4,6 +4,7 @@ import { Position } from "../../interfaces";
 import { Buses } from "../Buses/Buses";
 import { BusStopDetail } from "../BusStopDetail/BusStopDetail";
 import Map from "../Map/Map";
+import { Trains } from "../Trains/Trains";
 
 export const Routes = ({ position }: { position: Position }) => {
   return (
@@ -14,8 +15,8 @@ export const Routes = ({ position }: { position: Position }) => {
       <Route exact path="/buses">
         <Buses position={position} />
       </Route>
-      <Route path="/bus-detail">
-        <BusStopDetail />
+      <Route exact path="/trains">
+        <Trains />
       </Route>
     </Switch>
   );

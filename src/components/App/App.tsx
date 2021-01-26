@@ -1,19 +1,20 @@
 import * as React from "react";
-import { ChakraProvider, useDisclosure } from "@chakra-ui/react";
+import { ChakraProvider, useDisclosure, Text } from "@chakra-ui/react";
 import { Sidebar } from "../Sidebar/Sidebar";
 import { usePosition } from "use-position";
 import { useEffect, useRef } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import { getAllBusStopsThunk } from "../../redux/ThunkActions/getAllBusStopsThunk/getAllBusStopsThunk";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Provider } from "react-redux";
 import { persistStore } from "redux-persist";
 import { PersistGate } from "redux-persist/integration/react";
 
-import { store } from "../../redux/store";
+import { RootState, store } from "../../redux/store";
 import { Header } from "../Header/Header";
 import theme from "../../theme";
 import { Routes } from "../Routes/Routes";
+import { getAllTrainArrivalsThunk } from "../../redux/ThunkActions/getAllTrainArrivalsThunk/getAllTrainArrivalsThunk";
 
 export const App = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -21,8 +22,11 @@ export const App = () => {
   const dispatch = useDispatch();
   const position = usePosition(false);
 
+  const { error } = useSelector((state: RootState) => state.global);
   useEffect(() => {
+    // TODO: wrap in a single thunk that handles loading/errors for both
     dispatch(getAllBusStopsThunk());
+    dispatch(getAllTrainArrivalsThunk());
   }, []);
 
   return (

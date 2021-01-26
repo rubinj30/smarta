@@ -1,13 +1,7 @@
 import { Typography } from "@material-ui/core";
-import { format } from "date-fns";
 import React from "react";
 import { WindowSize } from "../interfaces";
-
-export const formatTimeForColumn = (value: any) => {
-  const time = new Date(value);
-  const formattedTime = format(time, "h:mm aaaaa'm'");
-  return formattedTime;
-};
+import { formatTimeForColumn } from "./formatTimeForColumn";
 
 export const genBusColumns = (size: WindowSize) => {
   const isLarge = size === "large";

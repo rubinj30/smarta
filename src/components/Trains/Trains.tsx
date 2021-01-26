@@ -8,14 +8,11 @@ import { appendDistanceToStops } from "../../utils/appendDistanceToStops";
 import { genBusColumns } from "../../utils/genBusColumns";
 import { genWindowSize } from "../../utils/genWindowSize";
 import { useWindowWidth } from "../../hooks/useWindowWidth";
+import { genTrainColumns } from "../../utils/genTrainColumns";
 
-export const Buses = ({ position }: { position: Position }) => {
-  const { allBusStops } = useSelector((state: RootState) => state.global);
-
-  const stopsWithDistance = appendDistanceToStops(
-    allBusStops,
-    position as Position
-  );
+export const Trains = () => {
+  const { allTrainArrivals } = useSelector((state: RootState) => state.global);
+  console.log({ allTrainArrivals });
 
   // custom hook to listen and return window width
   const width = useWindowWidth();
@@ -24,13 +21,13 @@ export const Buses = ({ position }: { position: Position }) => {
   const windowSize = genWindowSize(width);
 
   return (
-    <Box margin={{ base: 1, md: 4, lg: 10 }} data-testid="buses-data-table">
+    <Box margin={{ base: 1, md: 4, lg: 10 }} data-testid="trains-data-table">
       <DataTable
-        type="bus"
-        data-testid="buses-data-table"
-        title="All Bus Stops"
-        data={stopsWithDistance}
-        columns={genBusColumns(windowSize)}
+        title="All Train Stops"
+        type="train"
+        data={allTrainArrivals}
+        data-testid="trains-data-table"
+        columns={genTrainColumns(windowSize)}
       />
     </Box>
   );

@@ -1,4 +1,5 @@
 export * from "./buses";
+export * from "./trains";
 
 export interface Position {
   latitude: number | undefined;

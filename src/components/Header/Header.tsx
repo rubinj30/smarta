@@ -1,7 +1,7 @@
 import React, { FC } from "react";
-import { Box, Heading, Flex, Center } from "@chakra-ui/react";
+import { Box, Heading, Center } from "@chakra-ui/react";
 import { HiMenuStyled } from "./HeaderStyles";
-import { FaBus } from "react-icons/fa";
+import { FaBus, FaTrain } from "react-icons/fa";
 
 interface HeaderProps {
   onOpen: () => void;
@@ -22,8 +22,9 @@ export const Header: FC<HeaderProps> = (props) => {
           />
         </Box>
         <Heading as="h1" size="xl" display="flex" alignItems="center">
-          <span style={{ paddingRight: 10 }}>SMARTA</span> <FaBus />
-          <span style={{ paddingLeft: 10 }}>Bus</span>
+          <FaTrain />
+          <span style={{ paddingRight: 10, paddingLeft: 10 }}>SMARTA</span>{" "}
+          <FaBus />
         </Heading>
       </Center>
     </Box>

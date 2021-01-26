@@ -1,21 +1,24 @@
 import MUIDataTable from "mui-datatables";
 import { FC } from "react";
-import { BusStopWithDistance } from "../../interfaces";
+import { BusStopWithDistance, TrainArrival } from "../../interfaces";
 
 interface Column {
   label: string;
   name: string;
+  option?: {
+    customBodyRender: any;
+  };
 }
 
 interface DataTableProps {
   title: string;
-  // add TrainStop in future so this table can be re-used
-  data: BusStopWithDistance[];
+  data: BusStopWithDistance[] | TrainArrival[];
   columns: Column[];
+  type: "bus" | "train";
 }
 
 export const DataTable: FC<DataTableProps> = (props) => {
-  const { title, data, columns } = props;
+  const { title, data, columns, type } = props;
   return (
     <MUIDataTable
       title={title}
@@ -27,7 +30,7 @@ export const DataTable: FC<DataTableProps> = (props) => {
         download: false,
         print: false,
         sortOrder: {
-          name: "distance",
+          name: type === "bus" ? "distance" : "NEXT_ARR",
           direction: "asc",
         },
       }}

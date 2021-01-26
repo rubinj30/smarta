@@ -1,7 +1,8 @@
 import { Position } from "../interfaces";
 import { MOCK_BUS_STOPS } from "../testUtils/__mocks__/bus";
 import { MOCK_POSITION } from "../testUtils/__mocks__/position";
-import { formatTimeForColumn, genBusColumns } from "./genBusColumns";
+import { genBusColumns } from "./genBusColumns";
+import { formatTimeForColumn } from "./formatTimeForColumn";
 import { appendDistanceToStops } from "./appendDistanceToStops";
 import { convertMetersToMiles } from "./convertMetersToMiles";
 import { organizeBusesByRoute } from "./organizeBusesByRoute";

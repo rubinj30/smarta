@@ -1,10 +1,11 @@
 import { Action, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { BusStop, Position } from "../../../interfaces";
+import { BusStop, TrainArrival } from "../../../interfaces";
 
 export interface GlobalSlice {
   loading: boolean;
   error: string | undefined;
   allBusStops: BusStop[];
+  allTrainArrivals: TrainArrival[];
 }
 
 const globalSlice = createSlice({
@@ -13,6 +14,7 @@ const globalSlice = createSlice({
     loading: false,
     error: undefined,
     allBusStops: [],
+    allTrainArrivals: [],
   } as GlobalSlice,
   reducers: {
     setLoading: (state, action: PayloadAction<boolean>) => {
@@ -27,6 +29,10 @@ const globalSlice = createSlice({
       state.allBusStops = action.payload;
       return state;
     },
+    setAllTrainArrivals: (state, action: PayloadAction<TrainArrival[]>) => {
+      state.allTrainArrivals = action.payload;
+      return state;
+    },
   },
 });
 
@@ -36,5 +42,7 @@ export const setError: (payload: string | undefined) => Action<string> =
   globalSlice.actions.setError;
 export const setAllBusStops: (payload: BusStop[]) => Action<string> =
   globalSlice.actions.setAllBusStops;
+export const setAllTrainArrivals: (payload: TrainArrival[]) => Action<string> =
+  globalSlice.actions.setAllTrainArrivals;
 
 export default globalSlice.reducer;

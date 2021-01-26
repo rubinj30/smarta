@@ -6,6 +6,7 @@ import { MapStyled } from "./MapStyles";
 import { Legend } from "./Legend/Legend";
 import { defaultCoords } from "../../utils/defaultCoords";
 import { Position } from "../../interfaces";
+import { genBusMarkers } from "../../utils/genBusMarkers";
 
 interface MapProps {
   position: Position;
@@ -41,26 +42,11 @@ const Map: FC<MapProps> = (props) => {
             <Marker
               key="my-position"
               position={{
-                lat: latitude,
-                lng: longitude,
+                lat: latitude || defaultCoords.lat,
+                lng: longitude || defaultCoords.lng,
               }}
             />
-            {allBusStops.map((stop, i) => {
-              return (
-                <Marker
-                  key={stop.BLOCKID + i}
-                  draggable={false}
-                  position={{
-                    lat: parseFloat(stop.LATITUDE),
-                    lng: parseFloat(stop.LONGITUDE),
-                  }}
-                  icon={{
-                    url:
-                      "http://maps.google.com/mapfiles/ms/icons/blue-dot.png",
-                  }}
-                />
-              );
-            })}
+            <>{genBusMarkers(allBusStops)}</>
           </>
           <></>
         </GoogleMap>

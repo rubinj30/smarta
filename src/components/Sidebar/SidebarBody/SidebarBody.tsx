@@ -9,17 +9,21 @@ const items = [
     route: "/",
   },
   {
+    text: "Trains",
+    route: "/trains",
+  },
+  {
     text: "Buses",
     route: "/buses",
   },
-  {
-    text: "Weather",
-    route: "/weather",
-  },
-  {
-    text: "Bus Detail",
-    route: "/bus-detail",
-  },
+  // {
+  //   text: "Weather",
+  //   route: "/weather",
+  // },
+  // {
+  //   text: "Routes",
+  //   route: "/bus-detail",
+  // },
   // {
   //   text: "Nearest Stops",
   //   route: "/nearest",
