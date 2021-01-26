@@ -3,7 +3,7 @@
 https://smarta-app.herokuapp.com/
 
 ### Use
-Since this geolocates the user (via [GeoLocation API](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation)), the user must allow their location to be accessed by their browser. They may also have to enable this setting on their computer(or phone allowing the browser in use to access on each session). It works best if the user is metro Atlanta, the map will show nearby MARTA buses.
+Since this geolocates the user (via [GeoLocation API](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation)), the user must allow their location to be accessed by their browser. They may also have to enable this setting on their computer (or phone) allowing the browser in use to access on each session). It works best if the user is metro Atlanta, the map will show nearby MARTA buses. I was testing on my wife's computer, and despite hitting "Allow" her chrome had not been granted access in Location Services on her Macbook. 
 
 If the user is NOT in Atlanta, it may be better to not allow the browser to access their location, as it will default to the Atlanta Cox Headquarters' latitude/longitude coordinates. 
 

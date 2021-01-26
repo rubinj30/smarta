@@ -10,6 +10,7 @@ export const getAllBusStops = async () => {
     const response = await axios.get<BusStop[]>(ALL_BUSES_URL);
     return response.data;
   } catch (error) {
+    console.log("error", error);
     throw error.response;
   }
 };
