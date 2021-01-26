@@ -17,6 +17,7 @@ describe("Map", () => {
         loading: false,
         error: undefined,
         allBusStops: [{ ...MOCK_BUS_STOPS[0] }, { ...MOCK_BUS_STOPS[1] }],
+        allTrainArrivals: [],
       },
     });
   });
@@ -24,7 +25,6 @@ describe("Map", () => {
   it("renders", () => {
     renderWithRedux(<Map position={MOCK_POSITION} />, store);
     //@ts-ignore
-    screen.debug(null, 2000);
   });
 
   it("should call appendDistanceToStops with bus data from store and position", () => {
