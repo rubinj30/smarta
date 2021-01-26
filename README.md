@@ -33,6 +33,8 @@ Plotting the train data points will require some additional Map API investigatio
 ### UI Decisions
 I wanted to make the app simple, clean, and responsive. The UI library helped make it look clean, and the Maps and DataTable packages allowed to build something that had a lot of content on just a few pages. 
 
+Looking back using such an unfamiliar UI library was not a great decision, but I had heard good things about it from teammates who spent more time working on our companies UI Library. One of the things I really liked was how easy the Theme switcher was to implement and configure. I set it to defaul to dark-mode, but you can choose to use either in the "Settings" at the bottom of the sidebar. 
+
 The geolocation/maps were new territory for me, so I first started fiddling with these, and once I got them working I decided to use this map as the homepage, with the hopes of getting some of the public transit datapoints to also be plotted on the map. 
 
 The datables were pretty easy to implement initially, but with all of the datapoints (and the bus ones unclearly labeled) it took more time than expected to make the columns responsive. The biggest issue with this package was that it required Material UI to be in the depedency tree. So, I actually have two UI library's in the dependencies 🤦. If I had enough time, I would switch over to use (react-table)[https://react-table.tanstack.com/], a popular Table library built by the same open-source maintainer that created react-query, mentioned above. React-table works well with Chakra UI and is very powerful, however, the features and UI out-of-the-box are minimal. 
