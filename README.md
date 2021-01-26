@@ -1,8 +1,8 @@
 # SMARTA
-#### Deployed link:
+### Deployed link:
 https://smarta-app.herokuapp.com/
 
-#### Use
+### Use
 Since this geolocates the user (via [GeoLocation API](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation)), the user must allow their location to be accessed by their browser. They may also have to enable this setting on their computer(or phone allowing the browser in use to access on each session). It works best if the user is metro Atlanta, the map will show nearby MARTA buses.
 
 If the user is NOT in Atlanta, it may be better to not allow the browser to access their location, as it will default to the Atlanta Cox Headquarters' latitude/longitude coordinates. 
@@ -10,14 +10,14 @@ If the user is NOT in Atlanta, it may be better to not allow the browser to acce
 In the future, I plan to add some sort of input where the user can enter a specific location to show as the center of the map. 
 
 
-#### Challenge Choice
+### Challenge Choice
 I considered the 3rd challenge option, but I was getting a lot of errors when looking at the API examples, so I decided to go with the first option for public transit. Because I live in Atlanta I decided to use the free MARTA API's, instead of the Phoenix one, as maybe I could continue building this out after the ~3 days I spent building it. 
 
 I considered setting up a full-stack application, caching and formatting the data there and then serving it up to my React front-end. But, for the purposes of time, I decided to just setup a front-end and deploy it via Heroku. 
 
 BUT, this is the real reason I chose this challenge - https://www.youtube.com/watch?v=ylXVITUc2AY
 
-#### Architectural Decisions
+### Architectural Decisions
 As I've primarily worked on frontend React applications, i knew I'd do the majority of the heavy lifting in React. 
 
 The public transit APIs were not the most intuitive and the bus and train data were suprisingly dissimilar, so I decided to start with one of them, and hope that I could re-use some of the components for the other. A datatable would work for any dataset, but the location for each meant the map would not be as re-usable off the bat.
@@ -30,7 +30,7 @@ Some other things for future would be to spend more time looking at transit apps
 
 Plotting the train data points will require some additional Map API investigation since there are no lat/lng coordinates. 
 
-#### UI Decisions
+### UI Decisions
 I wanted to make the app simple, clean, and responsive. The UI library helped make it look clean, and the Maps and DataTable packages allowed to build something that had a lot of content on just a few pages. 
 
 The geolocation/maps were new territory for me, so I first started fiddling with these, and once I got them working I decided to use this map as the homepage, with the hopes of getting some of the public transit datapoints to also be plotted on the map. 
@@ -39,7 +39,7 @@ The datables were pretty easy to implement initially, but with all of the datapo
 
 
 
-#### Detailed list of technologies used:
+### Detailed list of technologies used:
 - [GeoLocation API](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation)
   - After fiddling around with it and then starting to write my own custom hook, for time's sake decided to use an existing one I found on npm - [use-position](https://www.npmjs.com/package/use-position)
   - With the coordinates provided by the `use-position` library, the client is geolocated and those coordinates are pluged into the Google Maps API
@@ -63,11 +63,11 @@ The datables were pretty easy to implement initially, but with all of the datapo
 - [Jest](https://jestjs.io/) as a test runner
 - [axios](https://github.com/axios/axios) for data fetching
 
-#### Roadbumps
+### Roadbumps
 - I picked ChakraUI to save time on writing custom CSS, but it presented other hurdles around testing as it including certain basic components are based on Portals/Modals and the use of a Context Provider
 - I was getting CORS errors locally while using the MARTA APIs, but this should not have been an issue when I deployed the app, but it was. I noticed on the last day since I mistakenly waited to deploy, so I didn't have a ton of time. I continued using a heroku URL as a proxy, which allowed for me to deploy. However the heroku URL will eventually run into a rate-limiting issue.
 
-#### Running locally: 
+### Running locally: 
 Environement variables:
 - To get this working locally, you'll need to create a `.env` file at the root of the repo and include the following:
 ```
