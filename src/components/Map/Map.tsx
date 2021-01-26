@@ -30,6 +30,7 @@ const Map: FC<MapProps> = (props) => {
             minHeight: "400px",
             minWidth: "400px",
           }}
+          options={{ radius: 6000 }}
           center={{
             lat: latitude || defaultCoords.lat,
             lng: longitude || defaultCoords.lng,

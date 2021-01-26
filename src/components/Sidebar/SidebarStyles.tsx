@@ -1,5 +1,6 @@
 import { DrawerFooter, DrawerHeader, Text } from "@chakra-ui/react";
 import styled from "@emotion/styled";
+import { FaWindowClose } from "react-icons/fa";
 
 export const DrawerHeaderStyled = styled(DrawerHeader)`
   display: flex;
@@ -31,5 +32,11 @@ export const SidebarTextItem = styled(Text)`
   margin: 20px 4px;
   &:hover {
     transition: 0.1s;
+  }
+`;
+
+export const FaWindowCloseStyled = styled(FaWindowClose)`
+  &:hover {
+    color: teal;
   }
 `;

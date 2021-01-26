@@ -9,12 +9,15 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { FC, useState } from "react";
-import { FaBus, FaWindowClose } from "react-icons/fa";
-import { DrawerFooterStyled, DrawerHeaderStyled } from "./SidebarStyles";
+import { FaBus } from "react-icons/fa";
+import {
+  DrawerFooterStyled,
+  DrawerHeaderStyled,
+  FaWindowCloseStyled,
+} from "./SidebarStyles";
 import { SidebarBody } from "./SidebarBody/SidebarBody";
 import { ColorModeSwitcher } from "../../ColorModeSwitcher";
 import { SettingsIcon } from "@chakra-ui/icons";
-import { Position } from "../../interfaces";
 
 export interface SidebarProps {
   open: boolean;
@@ -43,7 +46,7 @@ export const Sidebar: FC<SidebarProps> = (props) => {
             <Heading as="h1" size="xl" display="flex" alignItems="center">
               SMARTA
             </Heading>
-            <FaWindowClose
+            <FaWindowCloseStyled
               onClick={onClose}
               className="close-icon"
               cursor="pointer"
